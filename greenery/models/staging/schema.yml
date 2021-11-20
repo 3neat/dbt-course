@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: Primary user model for contact info
+
+  - name: stg_addresses
+    description: Contact address information of User
+
+  - name: stg_orders
+    description: Primary Order model information
+  
+  - name: stg_events
+    description: Primary event information for web behavior
+
+  - name: stg_order_items
+    description: Number of items ordered for a product
+
+  - name: stg_products
+    description: Product information
+
+  - name: stg_promos
+    description: Promo code information

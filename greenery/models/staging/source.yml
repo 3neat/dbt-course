@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: staging
+    schema: public
+    database: dbt
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+      
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+            
+    tables:
+      - name: addresses
+        description: >
+          Contains address contact info per address ID
+      - name: events
+        loaded_at_field: created_at
+        description: >
+          Contains web behavior session info
+      - name: order_items
+        description: >
+          Contains number of items odered per product per order
+      - name: orders
+        loaded_at_field: created_at
+        description: >
+          Contains information regarding order
+      - name: products
+        description: >
+          Contains information on product
+      - name: promos
+        description: >
+          Information on the promotional offer
+      - name: users
+        loaded_at_field: created_at
+        description: >
+          Information on the User
