@@ -8,7 +8,7 @@ SELECT
     id
     , address_id
     , address
-    , zipcode
+    , zipcode as zip_code
     , state
     , country
 FROM {{ source('staging', 'addresses') }}
