@@ -5,7 +5,7 @@
 }}
 
 SELECT
-    promo_id
+    promo_id as promo_code
     , discout as discount
-    , status
+    , status as promo_status
 FROM {{ source('staging', 'promos') }}
