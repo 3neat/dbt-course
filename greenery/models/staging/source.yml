@@ -16,26 +16,145 @@ sources:
             
     tables:
       - name: addresses
-        description: >
-          Contains address contact info per address ID
+        description: Contains address contact info per address ID
+        columns:
+          - name: address_id
+            tests:
+              - unique
+              - not_null
+          - name: address
+            tests:
+              - not_null
+          - name: zipcode
+            tests:
+              - not_null
+          - name: state
+            tests:
+              - not_null
+          - name: country
+            tests:
+              - not_null                              
+     
+     
       - name: events
         loaded_at_field: created_at
-        description: >
-          Contains web behavior session info
+        description: Contains web behavior session info
+        columns:
+          - name: event_id
+            tests:
+              - unique
+              - not_null
+          - name: session_id
+            tests:
+              - not_null
+          - name: user_id
+            tests:
+              - not_null
+          - name: page_url
+            tests:
+              - not_null
+          - name: event_type
+            tests:
+              - accepted_values:
+                  values: ['page_view','delete_from_cart','checkout','add_to_cart','package_shipped','account_created']
+              - not_null                    
+     
+     
       - name: order_items
-        description: >
-          Contains number of items odered per product per order
+        description: Contains number of items odered per product per order
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+          - name: product_id
+            tests:
+              - not_null       
+      
+      
       - name: orders
         loaded_at_field: created_at
-        description: >
-          Contains information regarding order
+        description: Contains information regarding order
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+          - name: user_id
+            tests:
+              - not_null    
+          - name: address_id
+            tests: 
+              - not_null
+          - name: order_cost
+            tests:
+              - not_null
+          - name: shipping_cost
+            tests:
+              - not_null
+          - name: order_total
+            tests:
+              - not_null
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['shipped','pending','preparing','delivered']
+
+
       - name: products
-        description: >
-          Contains information on product
+        description: Contains information on product
+        columns:
+          - name: product_id
+            tests:
+              - unique
+              - not_null
+          - name: name
+            tests:
+              - not_null
+          - name: price
+            tests:
+              - not_null
+              - positive_values
+          - name: quantity
+            tests:
+              - not_null
+              - positive_values              
+      
+      
       - name: promos
-        description: >
-          Information on the promotional offer
+        description: Information on the promotional offer
+        columns:
+          - name: promo_id
+            tests:
+              - accepted_values:
+                  values: ['task-force','instruction set','leverage','Optional','Mandatory','Digitized']
+          - name: discout
+            tests:
+              - positive_values
+              - not_null
+          - name: status
+            tests:
+              - accepted_values: 
+                  values: ['inactive', 'active']
+
+
+      
       - name: users
         loaded_at_field: created_at
-        description: >
-          Information on the User
+        description: Information on the User      
+        columns:
+          - name: user_id
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+            tests:
+              - not_null
+          - name: last_name
+            tests:
+              - not_null                   
+          - name: email
+            tests:
+              - unique
+              - not_null
+          - name: phone_number
+            tests:
+              - not_null                     
