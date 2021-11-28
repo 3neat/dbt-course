@@ -11,7 +11,7 @@ with src as (
 renamed as (
     select
         id
-        , created_at
+        , created_at as created_at_utc
         , event_type        
         , session_id
         , event_id

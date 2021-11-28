@@ -19,10 +19,10 @@ renamed as (
         , order_total
         , tracking_id
         , shipping_service
-        , estimated_delivery_at
-        , delivered_at
+        , estimated_delivery_at as estimated_delivery_at_utc
+        , delivered_at as delivery_at_utc
         , status as order_status
-        , created_at    
+        , created_at as created_at_utc
     from src
 ),
 

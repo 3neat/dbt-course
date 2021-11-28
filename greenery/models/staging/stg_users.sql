@@ -10,14 +10,13 @@ with src as (
 
 renamed as (
     select
-        id
-        , user_id
+        user_id
         , first_name
         , last_name
         , email
         , phone_number
-        , created_at
-        , updated_at
+        , created_at as created_at_utc
+        , updated_at as upated_at_utc
         , address_id
     from src
 ),

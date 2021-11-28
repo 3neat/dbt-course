@@ -11,7 +11,7 @@ with src as (
 renamed as (
     select
         product_id
-        , name
+        , name as product_name
         , price
         , quantity
     from src
