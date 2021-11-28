@@ -11,7 +11,7 @@ with src as (
 renamed as (
     select
         order_id
-        , promo_id
+        , promo_id as promo_code
         , user_id
         , address_id
         , order_cost
