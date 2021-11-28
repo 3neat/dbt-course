@@ -23,7 +23,10 @@ renamed as (
 ),
 
 transformed as (
-    select * from renamed
+    select
+        *
+        , split_part(email, '@', 2) as email_domain
+    from renamed
 ),
 
 final as (
