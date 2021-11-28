@@ -4,14 +4,30 @@
     )
 }}
 
-SELECT
-    id
-    , user_id
-    , first_name
-    , last_name
-    , email
-    , phone_number
-    , created_at
-    , updated_at
-    , address_id
-FROM {{ source('staging', 'users') }}
+with src as (
+    select * from {{ source('staging', 'users') }}
+),
+
+renamed as (
+    select
+        id
+        , user_id
+        , first_name
+        , last_name
+        , email
+        , phone_number
+        , created_at
+        , updated_at
+        , address_id
+    from src
+),
+
+transformed as (
+    select * from renamed
+),
+
+final as (
+    select * from transformed
+)
+
+select * from final

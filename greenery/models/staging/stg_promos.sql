@@ -4,8 +4,24 @@
     )
 }}
 
-SELECT
-    promo_id as promo_code
-    , discout as discount
-    , status as promo_status
-FROM {{ source('staging', 'promos') }}
+with src as (
+    select * from {{ source('staging', 'promos') }}
+),
+
+renamed as (
+    select
+        promo_id as promo_code
+        , discout as discount
+        , status as promo_status
+    from src
+),
+
+transformed as (
+    select * from renamed
+),
+
+final as (
+    select * from transformed
+)
+
+select * from final

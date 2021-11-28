@@ -4,11 +4,27 @@
     )
 }}
 
-SELECT
-    id
-    , address_id
-    , address
-    , zipcode as zip_code
-    , state
-    , country
-FROM {{ source('staging', 'addresses') }}
+with src as (
+    select * from {{ source('staging', 'addresses') }}
+),
+
+renamed as (
+    select
+        id
+        , address_id
+        , address
+        , zipcode as zip_code
+        , state
+        , country
+    from src
+),
+
+transformed as (
+    select * from renamed
+),
+
+final as (
+    select * from transformed
+)
+
+select * from final
