@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_page_views
+    description: "intermediate table to light prep fields for fact_page_views"
+    columns:
+      - name: ts_utc
+        tests:
+          - not_null
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+      - name: page_content_group
+        tests:
+          - not_null

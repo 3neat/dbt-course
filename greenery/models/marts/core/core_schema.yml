@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_users
+    description: "intermediate table to light prep fields for dim_users"
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+      - name: email_domain
+        tests:
+          - not_null
+      - name: account_age_days
+        tests:
+          - not_null
+  - name: dim_users
+    description: "core users model"
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
