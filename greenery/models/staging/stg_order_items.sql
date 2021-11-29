@@ -5,7 +5,7 @@
 }}
 
 with src as (
-    select * from {{ source('staging', 'order_items') }}
+    select * from {{ source('tutorial', 'order_items') }}
 ),
 
 renamed as (

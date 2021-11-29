@@ -9,6 +9,6 @@
     )
 }}
     
-select * from {{ source('staging','orders') }}
+select * from {{ source('tutorial','orders') }}
 
 {% endsnapshot %}
