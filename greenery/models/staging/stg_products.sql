@@ -13,7 +13,7 @@ renamed as (
         product_id
         , name as product_name
         , price
-        , quantity
+        , quantity as quantity_inventory
     from src
 ),
 

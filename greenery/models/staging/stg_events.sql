@@ -10,11 +10,10 @@ with src as (
 
 renamed as (
     select
-        id
-        , created_at as created_at_utc
+        event_id
+        , created_at as ts_utc
         , event_type        
         , session_id
-        , event_id
         , user_id
         , page_url
     from src

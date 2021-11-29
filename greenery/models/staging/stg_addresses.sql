@@ -10,8 +10,7 @@ with src as (
 
 renamed as (
     select
-        id
-        , address_id
+        address_id
         , address
         , zipcode as zip_code
         , state

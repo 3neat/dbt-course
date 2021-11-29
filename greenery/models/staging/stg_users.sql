@@ -15,17 +15,14 @@ renamed as (
         , last_name
         , email
         , phone_number
-        , created_at as created_at_utc
+        , created_at as account_creation_utc
         , updated_at as updated_at_utc
         , address_id
     from src
 ),
 
 transformed as (
-    select
-        *
-        , split_part(email, '@', 2) as email_domain
-    from renamed
+    select * from renamed
 ),
 
 final as (

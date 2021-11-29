@@ -11,7 +11,7 @@ with src as (
 renamed as (
     select
         promo_id as promo_code
-        , discout as discount
+        , discout as discount_amount_pct
         , status as promo_status
     from src
 ),
